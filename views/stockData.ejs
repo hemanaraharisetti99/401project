@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Search App</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+            margin: 0;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .stock-info {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: left;
+            width: 400px;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Stock Search</h1>
+    <form action="/data" method="GET">
+        <input type="text" name="symbol" placeholder="Enter stock symbol" required>
+        <button type="submit">Search</button>
+    </form>
+    <% if (msg) { %>
+        <p class="error"><%= msg %></p>
+    <% } %>
+    <% if (n && p && c && h && l) { %>
+        <div class="stock-info">
+            <p><%= n %></p>
+            <p><%= p %></p>
+            <p><%= c %></p>
+            <p><%= h %></p>
+            <p><%= l %></p>
+        </div>
+    <% } %>
+</body>
+</html>
